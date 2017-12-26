@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "gravatar-url": "^2.0.0",
+    "jwt-decode": "^2.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0-alpha.12",
     "react-dom": "^16.0.0",
@@ -13,6 +15,7 @@
     "react-scripts": "1.0.13",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.74.2",
     "validator": "^9.0.0"
@@ -35,6 +38,5 @@
     "prettier": "^1.7.4",
     "redux-devtools-extension": "^2.13.2"
   },
-
   "proxy": "http://localhost:8080"
 }

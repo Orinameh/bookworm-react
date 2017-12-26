@@ -1,15 +1,15 @@
 import React from 'react';
-import {Form, Button} from 'semantic-ui-react';
+import {Form, Button, Message} from 'semantic-ui-react';
 import PropTypes from "prop-types";
 import isEmail from "validator/lib/isEmail";
 import InlineError from "../messages/InlineError";
 
-class SignUpForm extends React.Component {
+class ForgotPasswordForm extends React.Component {
 
   state = {
     data: {
       email: '',
-      password: ''
+     
     },
     loading: false,
     errors: {}
@@ -35,8 +35,6 @@ class SignUpForm extends React.Component {
   validate = (data) => {
     const errors = {};
     if(!isEmail(data.email)) errors.email = "Invalid email";
-    if(!data.password) errors.password = "Can't be blank";
-
     return errors;
   }
 
@@ -44,6 +42,8 @@ class SignUpForm extends React.Component {
     const {data, errors, loading} = this.state;
     return (
       <Form onSubmit={this.onSubmit} loading={loading}>
+      {!!errors.global && <Message negative>{errors.global}</Message>}
+      
         <Form.Field error={!!errors.email}>
           <label htmlFor="email">Email</label>
           <input
@@ -57,28 +57,15 @@ class SignUpForm extends React.Component {
           {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
 
-        <Form.Field error={!!errors.password}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="make it secure"
-            value={data.password}
-            onChange={this.onChange}
-          />
-          {errors.password && <InlineError text={errors.password} />}
-
-        </Form.Field>
-        <Button primary>Sign Up</Button>
+        <Button primary>Forgot Password</Button>
       </Form>
 
     );
   }
 }
 
-SignUpForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   submit: PropTypes.func.isRequired
 }
 
-export default SignUpForm;
+export default ForgotPasswordForm;
